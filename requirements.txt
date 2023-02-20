@@ -1,13 +1,14 @@
 Django==3.2.4
 django-cors-headers==3.13.0
 django-filter==22.1
+django-seed==0.3.1
 django_debug_toolbar==3.8.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==4.8.0
 djoser==2.1.0
 drf-nested-routers==0.93.4
 drf-yasg==1.21.4
-mysqlclient==1.4.4
 Pillow==9.2.0
+psycopg2-binary==2.9.5
+PyJWT==2.6.0
 requests==2.28.1
-django_seed==0.3.1

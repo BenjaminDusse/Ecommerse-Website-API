@@ -27,7 +27,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductImage
-        fields = ['id', 'image']
+        fields = ['id', 'file']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -75,7 +75,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = ["id", "date", "name", "description"]
 
     def create(self, validated_data):
-        product_id = self.context["product_id"]
+        product_id = self.context.get("product_id")
         return Review.objects.create(product_id=product_id, **validated_data)
 
 
@@ -119,9 +119,9 @@ class AddCartItemSerializer(serializers.ModelSerializer):
         return value
 
     def save(self, **kwargs):
-        cart_id = self.context["cart_id"]
-        product_id = self.validated_data["product_id"]
-        quantity = self.validated_data["quantity"]
+        cart_id = self.context.get("cart_id")
+        product_id = self.validated_data.get("product_id")
+        quantity = self.validated_data.get("quantity")
 
         try:
             # Update an existing item

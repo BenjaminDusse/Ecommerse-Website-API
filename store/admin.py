@@ -30,8 +30,8 @@ class ProductImageInline(admin.TabularInline):
     readonly_fields = ['thumbnail']
 
     def thumbnail(self, instance):
-        if instance.image.name != '':
-            return format_html(f'<img src="{instance.image.url}" class="thumbnail" />')
+        if instance.file.name != '':
+            return format_html(f'<img src="{instance.file.url}" class="thumbnail" />')
         return ''
 
 

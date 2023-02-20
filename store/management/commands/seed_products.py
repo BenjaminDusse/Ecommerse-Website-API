@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.contrib.admin.utils import flatten
 from django_seed import Seed
 from store.models import Collection
-from store.models import Product, Photo
+from store.models import Product, ProductImage
 
 NAME = 'products'
 
@@ -37,10 +37,9 @@ class Command(BaseCommand):
         for i in range(1, random.randint(1, 9)):
             for pk in created_clean:
                 product = Product.objects.get(pk=pk)
-                Photo.objects.create(
+                ProductImage.objects.create(
                     caption=seeder.faker.sentence(),
                     product=product,
-                    file=f"product_images/{random.randint(1, 8)}.jpg"
+                    file=f"product_images/{random.randint(1, 21)}.jpg"
                 )
         self.stdout.write(self.style.SUCCESS(f"{number} {NAME} created!"))
-    

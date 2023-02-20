@@ -61,10 +61,14 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(
+    caption = models.CharField(max_length=200)
+    file = models.ImageField(
         upload_to="store/images",
         validators=[validate_file_size]
     )
+
+    def __str__(self):
+        return self.caption
 
     # Checking file
     # file = models.FileFIeld(
